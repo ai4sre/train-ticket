@@ -2,15 +2,8 @@ name: Deploy Docker Images
 
 on:
   push:
-    branches:
-      - "*"  # run for branches
     tags:
-      - "*"  # run for tags
-  pull_request:
-    branches:
-      - "*"  # run for branches
-    tags:
-      - "*"  # run for tags
+      - v[0-9]+.[0-9]+.[0-9]+
 
 jobs:
   build-and-deploy:
