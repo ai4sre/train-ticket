@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.UUID;
@@ -13,6 +15,7 @@ import java.util.UUID;
  */
 @Data
 @Document(collection = "orders")
+@CompoundIndex(def = "{'travelDate': 1, 'trainNumber': 1}", unique = false)
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Order {
@@ -22,7 +25,6 @@ public class Order {
 
     private Date boughtDate;
 
-
     private Date travelDate;
 
 
@@ -31,6 +33,7 @@ public class Order {
     /**
      * Which Account Bought it
      */
+    @Indexed
     private UUID accountId;
 
     /**
