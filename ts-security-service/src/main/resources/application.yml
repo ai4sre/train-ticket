@@ -1,6 +1,8 @@
 spring:
   application:
     name: ts-security-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ts-security-mongo

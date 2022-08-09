@@ -5,6 +5,8 @@ server:
 spring:
   application:
     name: ts-notification-service
+  main:
+    allow-circular-references: true
   mail:
     host: smtp.163.com
     port: 465

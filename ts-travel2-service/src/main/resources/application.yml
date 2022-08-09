@@ -5,6 +5,8 @@ server:
 spring:
   application:
     name: ts-travel2-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ts-travel2-mongo

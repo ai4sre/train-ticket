@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-food-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ts-food-mongo

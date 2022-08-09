@@ -5,6 +5,8 @@ server:
 spring:
   application:
     name: ts-ticketinfo-service
+  main:
+    allow-circular-references: true
 
 
 swagger:

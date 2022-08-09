@@ -5,6 +5,8 @@ server:
 spring:
   application:
     name: ts-rebook-service
+  main:
+    allow-circular-references: true
 swagger:
   controllerPackage: rebook.controller
 #  rabbitmq:

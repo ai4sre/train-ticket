@@ -4,7 +4,8 @@ server:
 spring:
   application:
     name: ts-admin-order-service
-
+  main:
+    allow-circular-references: true
 
 swagger:
   controllerPackage: adminorder.controller

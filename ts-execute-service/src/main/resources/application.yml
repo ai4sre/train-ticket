@@ -4,5 +4,7 @@ server:
 spring:
   application:
     name: ts-execute-service
+  main:
+    allow-circular-references: true
 swagger:
   controllerPackage: execute.controller

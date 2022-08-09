@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: ts-auth-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ts-auth-mongo
