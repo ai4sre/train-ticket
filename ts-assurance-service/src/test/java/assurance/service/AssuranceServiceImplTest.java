@@ -40,7 +40,7 @@ public class AssuranceServiceImplTest {
     @Test
     public void testFindAssuranceById1() {
         UUID id = UUID.randomUUID();
-        Mockito.when(assuranceRepository.findOne(id)).thenReturn(null);
+        Mockito.when(assuranceRepository.findById(id)).thenReturn(null);
         Response result = assuranceServiceImpl.findAssuranceById(id, headers);
         Assert.assertEquals(new Response<>(0, "No Content by this id", null), result);
     }
@@ -49,7 +49,7 @@ public class AssuranceServiceImplTest {
     public void testFindAssuranceById2() {
         UUID id = UUID.randomUUID();
         Assurance assurance = new Assurance(id, null, null);
-        Mockito.when(assuranceRepository.findOne(id)).thenReturn(assurance);
+        Mockito.when(assuranceRepository.findById(id)).thenReturn(assurance);
         Response result = assuranceServiceImpl.findAssuranceById(id, headers);
         Assert.assertEquals(new Response<>(1, "Find Assurance Success", assurance), result);
     }
@@ -101,7 +101,7 @@ public class AssuranceServiceImplTest {
     public void testDeleteById1() {
         UUID assuranceId = UUID.randomUUID();
         Mockito.doNothing().doThrow(new RuntimeException()).when(assuranceRepository).deleteById(assuranceId);
-        Mockito.when(assuranceRepository.findOne(assuranceId)).thenReturn(null);
+        Mockito.when(assuranceRepository.findById(assuranceId)).thenReturn(null);
         Response result = assuranceServiceImpl.deleteById(assuranceId, headers);
         Assert.assertEquals(new Response<>(1, "Delete Success with Assurance id", null), result);
     }
@@ -111,7 +111,7 @@ public class AssuranceServiceImplTest {
         UUID assuranceId = UUID.randomUUID();
         Mockito.doNothing().doThrow(new RuntimeException()).when(assuranceRepository).deleteById(assuranceId);
         Assurance assurance = new Assurance();
-        Mockito.when(assuranceRepository.findOne(assuranceId)).thenReturn(assurance);
+        Mockito.when(assuranceRepository.findById(assuranceId)).thenReturn(assurance);
         Response result = assuranceServiceImpl.deleteById(assuranceId, headers);
         Assert.assertEquals(new Response<>(0, "Fail.Assurance not clear", assuranceId), result);
     }
@@ -139,7 +139,7 @@ public class AssuranceServiceImplTest {
     public void testModify2() {
         UUID assuranceId = UUID.randomUUID();
         Assurance assurance = new Assurance(null, null, null);
-        Mockito.when(assuranceRepository.findOne(assuranceId)).thenReturn(assurance);
+        Mockito.when(assuranceRepository.findById(assuranceId)).thenReturn(assurance);
         Mockito.when(assuranceRepository.save(assurance)).thenReturn(null);
         Response result = assuranceServiceImpl.modify(assuranceId.toString(), "orderId", 1, headers);
         Assert.assertEquals(new Response<>(1, "Modify Success", new Assurance(null, null, AssuranceType.TRAFFIC_ACCIDENT)), result);
@@ -149,7 +149,7 @@ public class AssuranceServiceImplTest {
     public void testModify3() {
         UUID assuranceId = UUID.randomUUID();
         Assurance assurance = new Assurance(null, null, null);
-        Mockito.when(assuranceRepository.findOne(assuranceId)).thenReturn(assurance);
+        Mockito.when(assuranceRepository.findById(assuranceId)).thenReturn(assurance);
         Mockito.when(assuranceRepository.save(assurance)).thenReturn(null);
         Response result = assuranceServiceImpl.modify(assuranceId.toString(), "orderId", 0, headers);
         Assert.assertEquals(new Response<>(0, "Assurance Type not exist", null), result);

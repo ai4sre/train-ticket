@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface PaymentRepository extends CrudRepository<Payment,String> {
 
-    Payment findOne(String id);
+    Payment findById(String id);
 
     Payment findByOrderId(String orderId);
 

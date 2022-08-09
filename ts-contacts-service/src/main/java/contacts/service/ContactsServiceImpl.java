@@ -29,7 +29,7 @@ public class ContactsServiceImpl implements ContactsService {
     @Override
     public Response findContactsById(UUID id, HttpHeaders headers) {
         LOGGER.info("FIND CONTACTS BY ID: " + id);
-        Contacts contacts = contactsRepository.findOne(id);
+        Contacts contacts = contactsRepository.findById(id);
         if (contacts != null) {
             return new Response<>(1, success, contacts);
         } else {
@@ -47,7 +47,7 @@ public class ContactsServiceImpl implements ContactsService {
 
     @Override
     public Response createContacts(Contacts contacts, HttpHeaders headers) {
-        Contacts contactsTemp = contactsRepository.findOne(contacts.getId());
+        Contacts contactsTemp = contactsRepository.findById(contacts.getId());
         if (contactsTemp != null) {
             ContactsServiceImpl.LOGGER.warn("[Contacts Service][Init Contacts] Already Exists Id: {}", contacts.getId());
             return new Response<>(0, "Already Exists", contactsTemp);
@@ -82,7 +82,7 @@ public class ContactsServiceImpl implements ContactsService {
     @Override
     public Response delete(UUID contactsId, HttpHeaders headers) {
         contactsRepository.deleteById(contactsId);
-        Contacts contacts = contactsRepository.findOne(contactsId);
+        Contacts contacts = contactsRepository.findById(contactsId);
         if (contacts == null) {
             ContactsServiceImpl.LOGGER.info("[Contacts-Add&Delete-Service][DeleteContacts] Success.");
             return new Response<>(1, "Delete success", contactsId);

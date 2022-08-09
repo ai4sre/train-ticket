@@ -30,7 +30,7 @@ public class FoodMapServiceImpl implements FoodMapService {
 
     @Override
     public Response createFoodStore(FoodStore fs, HttpHeaders headers) {
-        FoodStore fsTemp = foodStoreRepository.findOne(fs.getId());
+        FoodStore fsTemp = foodStoreRepository.findById(fs.getId());
         if (fsTemp != null) {
             FoodMapServiceImpl.LOGGER.error("[Init FoodStore] Already Exists Id: {}", fs.getId());
             return new Response<>(0, "Already Exists Id", null);
@@ -42,7 +42,7 @@ public class FoodMapServiceImpl implements FoodMapService {
 
     @Override
     public TrainFood createTrainFood(TrainFood tf, HttpHeaders headers) {
-        TrainFood tfTemp = trainFoodRepository.findOne(tf.getId());
+        TrainFood tfTemp = trainFoodRepository.findById(tf.getId());
         if (tfTemp != null) {
             FoodMapServiceImpl.LOGGER.error("[Init TrainFood] Already Exists Id: {}", tf.getId());
         } else {

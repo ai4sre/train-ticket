@@ -21,7 +21,7 @@ public interface OrderOtherRepository extends MongoRepository<Order, String> {
      * @return Order
      */
     @Query("{ 'id': ?0 }")
-    Order findOne(UUID id);
+    Order findById(UUID id);
 
     /**
      * find all orders

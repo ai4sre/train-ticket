@@ -36,7 +36,7 @@ public class StationServiceImplTest {
     @Test
     public void testCreate1() {
         Station station = new Station();
-        Mockito.when(repository.findOne(Mockito.anyString())).thenReturn(null);
+        Mockito.when(repository.findById(Mockito.anyString())).thenReturn(null);
         Mockito.when(repository.save(Mockito.any(Station.class))).thenReturn(null);
         Response result = stationServiceImpl.create(station, headers);
         Assert.assertEquals(new Response<>(1, "Create success", station), result);
@@ -45,7 +45,7 @@ public class StationServiceImplTest {
     @Test
     public void testCreate2() {
         Station station = new Station();
-        Mockito.when(repository.findOne(Mockito.anyString())).thenReturn(station);
+        Mockito.when(repository.findById(Mockito.anyString())).thenReturn(station);
         Response result = stationServiceImpl.create(station, headers);
         Assert.assertEquals(new Response<>(0, "Already exists", station), result);
     }
@@ -66,7 +66,7 @@ public class StationServiceImplTest {
     @Test
     public void testUpdate1() {
         Station info = new Station();
-        Mockito.when(repository.findOne(Mockito.anyString())).thenReturn(null);
+        Mockito.when(repository.findById(Mockito.anyString())).thenReturn(null);
         Response result = stationServiceImpl.update(info, headers);
         Assert.assertEquals(new Response<>(0, "Station not exist", null), result);
     }
@@ -74,7 +74,7 @@ public class StationServiceImplTest {
     @Test
     public void testUpdate2() {
         Station info = new Station();
-        Mockito.when(repository.findOne(Mockito.anyString())).thenReturn(info);
+        Mockito.when(repository.findById(Mockito.anyString())).thenReturn(info);
         Mockito.when(repository.save(Mockito.any(Station.class))).thenReturn(null);
         Response result = stationServiceImpl.update(info, headers);
         Assert.assertEquals("Update success", result.getMsg());
@@ -83,7 +83,7 @@ public class StationServiceImplTest {
     @Test
     public void testDelete1() {
         Station info = new Station();
-        Mockito.when(repository.findOne(Mockito.anyString())).thenReturn(info);
+        Mockito.when(repository.findById(Mockito.anyString())).thenReturn(info);
         Mockito.doNothing().doThrow(new RuntimeException()).when(repository).delete(Mockito.any(Station.class));
         Response result = stationServiceImpl.delete(info, headers);
         Assert.assertEquals("Delete success", result.getMsg());
@@ -92,7 +92,7 @@ public class StationServiceImplTest {
     @Test
     public void testDelete2() {
         Station info = new Station();
-        Mockito.when(repository.findOne(Mockito.anyString())).thenReturn(null);
+        Mockito.when(repository.findById(Mockito.anyString())).thenReturn(null);
         Response result = stationServiceImpl.delete(info, headers);
         Assert.assertEquals(new Response<>(0, "Station not exist", null), result);
     }
@@ -147,14 +147,14 @@ public class StationServiceImplTest {
     @Test
     public void testQueryById1() {
         Station station = new Station();
-        Mockito.when(repository.findOne(Mockito.anyString())).thenReturn(station);
+        Mockito.when(repository.findById(Mockito.anyString())).thenReturn(station);
         Response result = stationServiceImpl.queryById("station_id", headers);
         Assert.assertEquals(new Response<>(1, "Success", ""), result);
     }
 
     @Test
     public void testQueryById2() {
-        Mockito.when(repository.findOne(Mockito.anyString())).thenReturn(null);
+        Mockito.when(repository.findById(Mockito.anyString())).thenReturn(null);
         Response result = stationServiceImpl.queryById("station_id", headers);
         Assert.assertEquals(new Response<>(0, "No that stationId", "station_id"), result);
     }
@@ -171,7 +171,7 @@ public class StationServiceImplTest {
         Station station = new Station();
         List<String> idList = new ArrayList<>();
         idList.add("station_id");
-        Mockito.when(repository.findOne(Mockito.anyString())).thenReturn(station);
+        Mockito.when(repository.findById(Mockito.anyString())).thenReturn(station);
         Response result = stationServiceImpl.queryByIdBatch(idList, headers);
         Assert.assertEquals("Success", result.getMsg());
     }

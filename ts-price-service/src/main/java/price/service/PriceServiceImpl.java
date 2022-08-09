@@ -42,7 +42,7 @@ public class PriceServiceImpl implements PriceService {
             priceConfigRepository.save(priceConfig);
         } else {
             // modify
-            priceConfig = priceConfigRepository.findOne(createAndModifyPriceConfig.getId());
+            priceConfig = priceConfigRepository.findById(createAndModifyPriceConfig.getId());
             if (priceConfig == null) {
                 priceConfig = new PriceConfig();
                 priceConfig.setId(createAndModifyPriceConfig.getId());
@@ -57,9 +57,9 @@ public class PriceServiceImpl implements PriceService {
     }
 
     @Override
-    public PriceConfig findOne(String id, HttpHeaders headers) {
+    public PriceConfig findById(String id, HttpHeaders headers) {
         PriceServiceImpl.LOGGER.info("[Find By Id] ID: {}", id);
-        return priceConfigRepository.findOne(UUID.fromString(id));
+        return priceConfigRepository.findById(UUID.fromString(id));
     }
 
     @Override
@@ -95,7 +95,7 @@ public class PriceServiceImpl implements PriceService {
 
     @Override
     public Response deletePriceConfig(PriceConfig c, HttpHeaders headers) {
-        PriceConfig priceConfig = priceConfigRepository.findOne(c.getId());
+        PriceConfig priceConfig = priceConfigRepository.findById(c.getId());
         if (priceConfig == null) {
             PriceServiceImpl.LOGGER.error("Delete price config error. Price config not found, PriceConfigId: {}",c.getId());
             return new Response<>(0, noThatConfig, null);
@@ -113,7 +113,7 @@ public class PriceServiceImpl implements PriceService {
 
     @Override
     public Response updatePriceConfig(PriceConfig c, HttpHeaders headers) {
-        PriceConfig priceConfig = priceConfigRepository.findOne(c.getId());
+        PriceConfig priceConfig = priceConfigRepository.findById(c.getId());
         if (priceConfig == null) {
             PriceServiceImpl.LOGGER.error("Update price config error. Price config not found, PriceConfigId: {}",c.getId());
             return new Response<>(0, noThatConfig, null);

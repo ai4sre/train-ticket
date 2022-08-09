@@ -89,7 +89,7 @@ public class FoodServiceImplTest {
     @Test
     public void testUpdateFoodOrder1() {
         FoodOrder updateFoodOrder = new FoodOrder();
-        Mockito.when(foodOrderRepository.findOne(Mockito.any(UUID.class))).thenReturn(null);
+        Mockito.when(foodOrderRepository.findById(Mockito.any(UUID.class))).thenReturn(null);
         Response result = foodServiceImpl.updateFoodOrder(updateFoodOrder, headers);
         Assert.assertEquals(new Response<>(0, "Order Id Is Non-Existent.", null), result);
     }
@@ -97,7 +97,7 @@ public class FoodServiceImplTest {
     @Test
     public void testUpdateFoodOrder2() {
         FoodOrder updateFoodOrder = new FoodOrder(UUID.randomUUID(), UUID.randomUUID(), 1, "station_name", "store_name", "food_name", 3.0);
-        Mockito.when(foodOrderRepository.findOne(Mockito.any(UUID.class))).thenReturn(updateFoodOrder);
+        Mockito.when(foodOrderRepository.findById(Mockito.any(UUID.class))).thenReturn(updateFoodOrder);
         Mockito.when(foodOrderRepository.save(Mockito.any(FoodOrder.class))).thenReturn(null);
         Response result = foodServiceImpl.updateFoodOrder(updateFoodOrder, headers);
         Assert.assertEquals(new Response<>(1, "Success", updateFoodOrder), result);

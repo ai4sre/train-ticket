@@ -19,7 +19,7 @@ public interface ContactsRepository extends MongoRepository<Contacts, String> {
      * @param id id
      * @return Contacts
      */
-    Contacts findOne(UUID id);
+    Contacts findById(UUID id);
 
     /**
      * find by account id

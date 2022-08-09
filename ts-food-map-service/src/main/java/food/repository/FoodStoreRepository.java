@@ -11,7 +11,7 @@ import java.util.UUID;
 @Repository
 public interface FoodStoreRepository extends MongoRepository<FoodStore, String> {
 
-    FoodStore findOne(UUID id);
+    FoodStore findById(UUID id);
 
     @Query("{ 'stationId' : ?0 }")
     List<FoodStore> findByStationId(String stationId);

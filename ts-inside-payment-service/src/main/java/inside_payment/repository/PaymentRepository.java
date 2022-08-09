@@ -16,7 +16,7 @@ public interface PaymentRepository extends CrudRepository<Payment,String> {
      * @param id id
      * @return Payment
      */
-    Payment findOne(String id);
+    Payment findByPaymentId(String id);
 
     /**
      * find by order id

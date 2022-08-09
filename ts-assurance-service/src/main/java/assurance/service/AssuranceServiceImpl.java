@@ -26,7 +26,7 @@ public class AssuranceServiceImpl implements AssuranceService {
 
     @Override
     public Response findAssuranceById(UUID id, HttpHeaders headers) {
-        Assurance assurance = assuranceRepository.findOne(id);
+        Assurance assurance = assuranceRepository.findById(id);
         if (assurance == null) {
             AssuranceServiceImpl.LOGGER.warn("No content, id: {}", id);
             return new Response<>(0, "No Content by this id", null);
@@ -69,7 +69,7 @@ public class AssuranceServiceImpl implements AssuranceService {
     @Override
     public Response deleteById(UUID assuranceId, HttpHeaders headers) {
         assuranceRepository.deleteById(assuranceId);
-        Assurance a = assuranceRepository.findOne(assuranceId);
+        Assurance a = assuranceRepository.findById(assuranceId);
         if (a == null) {
             AssuranceServiceImpl.LOGGER.info("[DeleteAssurance] Success, assuranceId: {}", assuranceId);
             return new Response<>(1, "Delete Success with Assurance id", null);

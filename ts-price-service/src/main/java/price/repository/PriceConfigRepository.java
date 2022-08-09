@@ -14,7 +14,7 @@ import java.util.UUID;
 public interface PriceConfigRepository extends MongoRepository<PriceConfig, String> {
 
     @Query("{ 'id': ?0 }")
-    PriceConfig findOne(UUID id);
+    PriceConfig findById(UUID id);
 
     @Query("{ 'routeId': ?0 , 'trainType': ?1 }")
     PriceConfig findByRouteIdAndTrainType(String routeId,String trainType);
