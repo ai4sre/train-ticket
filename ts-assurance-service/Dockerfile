@@ -1,4 +1,4 @@
-FROM openjdk:11-jre-slim-bullseye
+FROM openjdk:8-jre-slim-bullseye
 
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
 
