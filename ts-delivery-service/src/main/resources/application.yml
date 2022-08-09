@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-delivery-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ${mongohost:ts-delivery-mongo}

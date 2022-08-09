@@ -1,6 +1,8 @@
 spring:
   application:
     name: ts-route-plan-service
+  main:
+    allow-circular-references: true
 
 # HTTP Server
 server:

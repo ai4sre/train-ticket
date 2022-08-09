@@ -5,6 +5,8 @@ server:
 spring:
   application:
     name: ts-payment-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ts-payment-mongo

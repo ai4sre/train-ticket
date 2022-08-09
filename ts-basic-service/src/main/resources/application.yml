@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-basic-service
+  main:
+    allow-circular-references: true
 
 swagger:
   controllerPackage: fdse.microservice.controller

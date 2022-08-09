@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-admin-user-service
+  main:
+    allow-circular-references: true
 
 swagger:
   controllerPackage: adminuser.controller

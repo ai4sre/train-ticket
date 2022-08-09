@@ -14,6 +14,8 @@ server:
 spring:
   application:
     name: ts-preserve-other-service
+  main:
+    allow-circular-references: true
   rabbitmq:
     host: ${rabbitmq_host:localhost}
     port: ${rabbitmq_port:5672}

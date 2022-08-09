@@ -5,6 +5,8 @@ server:
 spring:
   application:
     name: ts-order-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ts-order-mongo

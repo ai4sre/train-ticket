@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-seat-service
+  main:
+    allow-circular-references: true
 
 swagger:
   controllerPackage: seat.controller

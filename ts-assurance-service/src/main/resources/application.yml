@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-assurance-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ts-assurance-mongo

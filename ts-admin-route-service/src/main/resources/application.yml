@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-admin-route-service
+  main:
+    allow-circular-references: true
 
 swagger:
   controllerPackage: adminroute.controller

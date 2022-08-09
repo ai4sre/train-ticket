@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-contacts-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ts-contacts-mongo

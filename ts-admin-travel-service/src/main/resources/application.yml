@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-admin-travel-service
+  main:
+    allow-circular-references: true
 
 swagger:
   controllerPackage: admintravel.controller

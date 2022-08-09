@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-admin-basic-info-service
+  main:
+    allow-circular-references: true
 
 swagger:
   controllerPackage: adminbasic.microservice

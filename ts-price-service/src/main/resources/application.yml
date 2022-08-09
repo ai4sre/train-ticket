@@ -1,6 +1,8 @@
 spring:
   application:
     name: ts-price-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ts-price-mongo

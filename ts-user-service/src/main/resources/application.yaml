@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-user-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ts-user-mongo

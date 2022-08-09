@@ -1,6 +1,8 @@
 spring:
   application:
     name: ts-route-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ts-route-mongo

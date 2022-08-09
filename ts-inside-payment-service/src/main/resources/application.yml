@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-inside-payment-service
+  main:
+    allow-circular-references: true
 
   data:
     mongodb:

@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ts-cancel-service
+  main:
+    allow-circular-references: true
 
 swagger:
   controllerPackage: cancel.controller

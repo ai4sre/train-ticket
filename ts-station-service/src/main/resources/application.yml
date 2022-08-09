@@ -1,6 +1,8 @@
 spring:
   application:
     name: ts-station-service
+  main:
+    allow-circular-references: true
   data:
     mongodb:
       host: ts-station-mongo
