@@ -12,7 +12,7 @@ import java.util.UUID;
 @Repository
 public interface TrainFoodRepository extends MongoRepository<TrainFood, String> {
 
-    TrainFood findById(UUID id);
+    TrainFood findOne(UUID id);
 
     @Override
     List<TrainFood> findAll();

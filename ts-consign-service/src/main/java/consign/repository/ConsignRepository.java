@@ -43,5 +43,5 @@ public interface ConsignRepository extends MongoRepository<ConsignRecord, String
      * @param id id
      * @return ConsignRecord
      */
-    ConsignRecord findById(UUID id);
+    ConsignRecord findOne(UUID id);
 }

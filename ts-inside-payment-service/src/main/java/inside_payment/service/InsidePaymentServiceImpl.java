@@ -346,7 +346,7 @@ public class InsidePaymentServiceImpl implements InsidePaymentService {
 
     @Override
     public void initPayment(Payment payment, HttpHeaders headers) {
-        Payment paymentTemp = paymentRepository.findById(payment.getId());
+        Payment paymentTemp = paymentRepository.findOne(payment.getId());
         if (paymentTemp == null) {
             paymentRepository.save(payment);
         } else {

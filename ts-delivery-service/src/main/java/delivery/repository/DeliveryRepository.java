@@ -11,7 +11,7 @@ import java.util.UUID;
 @Repository
 public interface DeliveryRepository extends MongoRepository<Delivery, String> {
 
-    Delivery findById(UUID id);
+    Delivery findOne(UUID id);
 
     @Query("{ 'orderId' : ?0 }")
     Delivery findByOrderId(UUID orderId);

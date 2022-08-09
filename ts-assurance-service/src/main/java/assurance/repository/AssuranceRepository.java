@@ -19,7 +19,7 @@ public interface AssuranceRepository  extends MongoRepository<Assurance, String>
      * @param id id
      * @return Assurance
      */
-    Assurance findById(UUID id);
+    Assurance findOne(UUID id);
 
     /**
      * find by order id

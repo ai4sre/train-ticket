@@ -10,7 +10,7 @@ public interface StationRepository extends CrudRepository<Station,String> {
 
     Station findByName(String name);
 
-    Station findById(String id);
+    Station findOne(String id);
 
     @Override
     List<Station> findAll();

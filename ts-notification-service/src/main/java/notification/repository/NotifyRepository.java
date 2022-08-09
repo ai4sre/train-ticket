@@ -12,7 +12,7 @@ import java.util.UUID;
 @Repository
 public interface NotifyRepository extends MongoRepository<NotifyInfo, String> {
 
-    NotifyInfo findById(UUID id);
+    NotifyInfo findOne(UUID id);
 
     @Override
     List<NotifyInfo> findAll();

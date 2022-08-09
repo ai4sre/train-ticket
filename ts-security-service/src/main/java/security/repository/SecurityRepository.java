@@ -17,7 +17,7 @@ public interface SecurityRepository extends MongoRepository<SecurityConfig,Strin
     SecurityConfig findByName(String name);
 
     @Query("{ 'id': ?0 }")
-    SecurityConfig findById(UUID id);
+    SecurityConfig findOne(UUID id);
 
     @Override
     ArrayList<SecurityConfig> findAll();

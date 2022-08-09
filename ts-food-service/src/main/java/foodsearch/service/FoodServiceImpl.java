@@ -162,7 +162,7 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     public Response updateFoodOrder(FoodOrder updateFoodOrder, HttpHeaders headers) {
-        FoodOrder fo = foodOrderRepository.findById(updateFoodOrder.getId());
+        FoodOrder fo = foodOrderRepository.findOne(updateFoodOrder.getId());
         if (fo == null) {
             FoodServiceImpl.LOGGER.info("[Update FoodOrder] Order Id Is Non-Existent, orderId: {}", updateFoodOrder.getOrderId());
             return new Response<>(0, orderIdNotExist, null);

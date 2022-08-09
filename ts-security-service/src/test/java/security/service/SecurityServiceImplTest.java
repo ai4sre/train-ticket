@@ -75,7 +75,7 @@ public class SecurityServiceImplTest {
     @Test
     public void testModifySecurityConfig1() {
         SecurityConfig sc = new SecurityConfig();
-        Mockito.when(securityRepository.findById(Mockito.any(UUID.class))).thenReturn(null);
+        Mockito.when(securityRepository.findOne(Mockito.any(UUID.class))).thenReturn(null);
         Response result = securityServiceImpl.modifySecurityConfig(sc, headers);
         Assert.assertEquals(new Response<>(0, "Security Config Not Exist", null), result);
     }
@@ -83,7 +83,7 @@ public class SecurityServiceImplTest {
     @Test
     public void testModifySecurityConfig2() {
         SecurityConfig sc = new SecurityConfig();
-        Mockito.when(securityRepository.findById(Mockito.any(UUID.class))).thenReturn(sc);
+        Mockito.when(securityRepository.findOne(Mockito.any(UUID.class))).thenReturn(sc);
         Mockito.when(securityRepository.save(Mockito.any(SecurityConfig.class))).thenReturn(null);
         Response result = securityServiceImpl.modifySecurityConfig(sc, headers);
         Assert.assertEquals(new Response<>(1, "Success", sc), result);
@@ -93,7 +93,7 @@ public class SecurityServiceImplTest {
     public void testDeleteSecurityConfig1() {
         UUID id = UUID.randomUUID();
         Mockito.doNothing().doThrow(new RuntimeException()).when(securityRepository).deleteById(Mockito.any(UUID.class));
-        Mockito.when(securityRepository.findById(Mockito.any(UUID.class))).thenReturn(null);
+        Mockito.when(securityRepository.findOne(Mockito.any(UUID.class))).thenReturn(null);
         Response result = securityServiceImpl.deleteSecurityConfig(id.toString(), headers);
         Assert.assertEquals(new Response<>(1, "Success", id.toString()), result);
     }
@@ -103,7 +103,7 @@ public class SecurityServiceImplTest {
         UUID id = UUID.randomUUID();
         SecurityConfig sc = new SecurityConfig();
         Mockito.doNothing().doThrow(new RuntimeException()).when(securityRepository).deleteById(Mockito.any(UUID.class));
-        Mockito.when(securityRepository.findById(Mockito.any(UUID.class))).thenReturn(sc);
+        Mockito.when(securityRepository.findOne(Mockito.any(UUID.class))).thenReturn(sc);
         Response result = securityServiceImpl.deleteSecurityConfig(id.toString(), headers);
         Assert.assertEquals("Reason Not clear", result.getMsg());
     }

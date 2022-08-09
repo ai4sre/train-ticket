@@ -71,7 +71,7 @@ public class ConsignServiceImpl implements ConsignService {
     public Response updateConsignRecord(Consign consignRequest, HttpHeaders headers) {
         ConsignServiceImpl.LOGGER.info("[ Update consign record]");
 
-        ConsignRecord originalRecord = repository.findById(consignRequest.getId());
+        ConsignRecord originalRecord = repository.findOne(consignRequest.getId());
         if (originalRecord == null) {
             return insertConsignRecord(consignRequest, headers);
         }

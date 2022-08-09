@@ -55,7 +55,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Response findOrderById(UUID id, HttpHeaders headers) {
-        Order order = orderRepository.findById(id);
+        Order order = orderRepository.findOne(id);
         if (order == null) {
             OrderServiceImpl.LOGGER.error("No content, id: {}",id);
             return new Response<>(0, "No Content by this id", null);
@@ -84,7 +84,7 @@ public class OrderServiceImpl implements OrderService {
     public Response alterOrder(OrderAlterInfo oai, HttpHeaders headers) {
 
         UUID oldOrderId = oai.getPreviousOrderId();
-        Order oldOrder = orderRepository.findById(oldOrderId);
+        Order oldOrder = orderRepository.findOne(oldOrderId);
         if (oldOrder == null) {
             OrderServiceImpl.LOGGER.error("[Alter Order] Fail.Order do not exist, OrderId: {}", oldOrderId);
             return new Response<>(0, "Old Order Does Not Exists", null);
@@ -197,7 +197,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Response saveChanges(Order order, HttpHeaders headers) {
 
-        Order oldOrder = orderRepository.findById(order.getId());
+        Order oldOrder = orderRepository.findOne(order.getId());
         if (oldOrder == null) {
             OrderServiceImpl.LOGGER.error("[Modify Order] Fail.Order not found, OrderId: {}", order.getId());
             return new Response<>(0, orderNotFound, null);
@@ -225,7 +225,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Response cancelOrder(UUID accountId, UUID orderId, HttpHeaders headers) {
-        Order oldOrder = orderRepository.findById(orderId);
+        Order oldOrder = orderRepository.findOne(orderId);
         if (oldOrder == null) {
             OrderServiceImpl.LOGGER.error("[Cancel Order] Fail.Order not found, OrderId: {}", orderId);
             return new Response<>(0, orderNotFound, null);
@@ -286,7 +286,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Response modifyOrder(String orderId, int status, HttpHeaders headers) {
-        Order order = orderRepository.findById(UUID.fromString(orderId));
+        Order order = orderRepository.findOne(UUID.fromString(orderId));
         if (order == null) {
             OrderServiceImpl.LOGGER.error("Modify order error.Order not found, OrderId: {}",orderId);
             return new Response<>(0, orderNotFound, null);
@@ -299,7 +299,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Response getOrderPrice(String orderId, HttpHeaders headers) {
-        Order order = orderRepository.findById(UUID.fromString(orderId));
+        Order order = orderRepository.findOne(UUID.fromString(orderId));
         if (order == null) {
             OrderServiceImpl.LOGGER.error("Get order price error.Order not found, OrderId: {}",orderId);
             return new Response<>(0, orderNotFound, "-1.0");
@@ -311,7 +311,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Response payOrder(String orderId, HttpHeaders headers) {
-        Order order = orderRepository.findById(UUID.fromString(orderId));
+        Order order = orderRepository.findOne(UUID.fromString(orderId));
         if (order == null) {
             OrderServiceImpl.LOGGER.error("Pay order error.Order not found, OrderId: {}",orderId);
             return new Response<>(0, orderNotFound, null);
@@ -324,7 +324,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Response getOrderById(String orderId, HttpHeaders headers) {
-        Order order = orderRepository.findById(UUID.fromString(orderId));
+        Order order = orderRepository.findOne(UUID.fromString(orderId));
         if (order == null) {
             OrderServiceImpl.LOGGER.error("Order not found, OrderId: {}",orderId);
             return new Response<>(0, orderNotFound, null);
@@ -335,7 +335,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void initOrder(Order order, HttpHeaders headers) {
-        Order orderTemp = orderRepository.findById(order.getId());
+        Order orderTemp = orderRepository.findOne(order.getId());
         if (orderTemp == null) {
             orderRepository.save(order);
         } else {
@@ -371,7 +371,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Response deleteOrder(String orderId, HttpHeaders headers) {
         UUID orderUuid = UUID.fromString(orderId);
-        Order order = orderRepository.findById(orderUuid);
+        Order order = orderRepository.findOne(orderUuid);
 
         if (order == null) {
             OrderServiceImpl.LOGGER.error("Delete order error.Order not found, OrderId: {}",orderId);
@@ -401,7 +401,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Response updateOrder(Order order, HttpHeaders headers) {
         LOGGER.info("UPDATE ORDER INFO: " + order.toString());
-        Order oldOrder = orderRepository.findById(order.getId());
+        Order oldOrder = orderRepository.findOne(order.getId());
         if (oldOrder == null) {
             OrderServiceImpl.LOGGER.error("[Admin Update Order] Fail.Order not found, OrderId: {}",order.getId());
             return new Response<>(0, "Order Not Found, Can't update", null);

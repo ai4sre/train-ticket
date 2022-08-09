@@ -19,7 +19,7 @@ public interface RouteRepository extends MongoRepository<Route, String> {
      * @return Route
      */
     @Query("{ 'id': ?0 }")
-    Route findById(String id);
+    Route findOne(String id);
 
     /**
      * find all routes

@@ -64,7 +64,7 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public Response modifySecurityConfig(SecurityConfig info, HttpHeaders headers) {
-        SecurityConfig sc = securityRepository.findById(info.getId());
+        SecurityConfig sc = securityRepository.findOne(info.getId());
         if (sc == null) {
             SecurityServiceImpl.LOGGER.error("Modify Security config error.Security config not found, SecurityConfigId: {},Name: {}",info.getId(),info.getName());
             return new Response<>(0, "Security Config Not Exist", null);
@@ -80,7 +80,7 @@ public class SecurityServiceImpl implements SecurityService {
     @Override
     public Response deleteSecurityConfig(String id, HttpHeaders headers) {
         securityRepository.deleteById(UUID.fromString(id));
-        SecurityConfig sc = securityRepository.findById(UUID.fromString(id));
+        SecurityConfig sc = securityRepository.findOne(UUID.fromString(id));
         if (sc == null) {
             return new Response<>(1, success, id);
         } else {

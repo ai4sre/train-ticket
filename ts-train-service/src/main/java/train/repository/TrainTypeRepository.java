@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TrainTypeRepository extends CrudRepository<TrainType,String>{
 
-    TrainType findById(String id);
+    TrainType findOne(String id);
     @Override
     List<TrainType> findAll();
     void deleteById(String id);

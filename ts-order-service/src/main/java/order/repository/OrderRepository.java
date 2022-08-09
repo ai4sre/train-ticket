@@ -15,7 +15,7 @@ import java.util.UUID;
 public interface OrderRepository extends MongoRepository<Order, String> {
 
     @Query("{ 'id': ?0 }")
-    Order findById(UUID id);
+    Order findOne(UUID id);
 
     @Override
     ArrayList<Order> findAll();

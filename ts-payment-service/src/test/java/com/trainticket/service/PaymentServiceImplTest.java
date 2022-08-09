@@ -82,7 +82,7 @@ public class PaymentServiceImplTest {
     @Test
     public void testInitPayment1() {
         Payment payment = new Payment();
-        Mockito.when(paymentRepository.findById(Mockito.anyString())).thenReturn(null);
+        Mockito.when(paymentRepository.findOne(Mockito.anyString())).thenReturn(null);
         Mockito.when(paymentRepository.save(Mockito.any(Payment.class))).thenReturn(null);
         paymentServiceImpl.initPayment(payment, headers);
         Mockito.verify(paymentRepository, Mockito.times(1)).save(Mockito.any(Payment.class));
@@ -91,7 +91,7 @@ public class PaymentServiceImplTest {
     @Test
     public void testInitPayment2() {
         Payment payment = new Payment();
-        Mockito.when(paymentRepository.findById(Mockito.anyString())).thenReturn(payment);
+        Mockito.when(paymentRepository.findOne(Mockito.anyString())).thenReturn(payment);
         Mockito.when(paymentRepository.save(Mockito.any(Payment.class))).thenReturn(null);
         paymentServiceImpl.initPayment(payment, headers);
         Mockito.verify(paymentRepository, Mockito.times(0)).save(Mockito.any(Payment.class));
