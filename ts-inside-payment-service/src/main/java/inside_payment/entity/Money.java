@@ -1,12 +1,15 @@
 package inside_payment.entity;
 
-import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.UUID;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.UUID;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.Data;
 
 /**
  * @author fdse
@@ -22,6 +25,7 @@ public class Money {
 
     @Valid
     @NotNull
+    @Indexed
     private String userId;
 
     @Valid

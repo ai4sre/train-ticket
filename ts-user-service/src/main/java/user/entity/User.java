@@ -1,11 +1,13 @@
 package user.entity;
 
+import java.util.UUID;
+
+import org.springframework.data.mongodb.core.index.Indexed;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.UUID;
 
 /**
  * @author fdse
@@ -16,6 +18,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class User {
 
+    @Indexed(unique = true)
     private UUID userId;
     private String userName;
     private String password;
